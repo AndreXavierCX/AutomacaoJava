@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import db.Database;
+import dao.DepartmentDAO;
+import model.Department;
 
 public class Main {
 
@@ -17,11 +19,11 @@ public class Main {
 		//conn ja consegue fazer conexão com o banco
 		//usando a conexão estabelecida "conn" com o connector jdbc
 		//postgreesql
-		/////fazer um select 
-		//insert(conn, "Software");
-		//executeQuery(conn, "Select * from department");
-		//updade(conn, "Mecânica", 4);
-		//delete(conn, 5);
+		DepartmentDAO dao = new DepartmentDAO(conn);
+		for (Department department : dao.selectAllDepartment()) {
+			System.out.println(department.name);
+		}
+			
 	}
 
 }
